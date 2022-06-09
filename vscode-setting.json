@@ -1,0 +1,83 @@
+{
+  "latex-workshop.docker.enabled": true,
+  "latex-workshop.docker.image.latex": "texlive/texlive",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.synctex(busy)",
+    "*.synctex.gz(busy)",
+    "*.nav",
+    "*.vrb",
+    "*.dvi",
+    "*synctex.gz"
+  ],
+  "latex-workshop.latex.outDir": ".",
+  "latex-workshop.latex.recipe.default": "lualatex",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "lualatex",
+      "tools": ["latexmk (lualatex)"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-interaction=nonstopmode",
+        "-e",
+        "$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode -file-line-error %S/",
+        "-e",
+        "$bibtex=q/upbibtex %O %B/",
+        "-e",
+        "$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/",
+        "-e",
+        "$makeindex=q/upmendex %O -o %D %S/",
+        "-e",
+        "$dvipdf=q/dvipdfmx %O -o %D %S/",
+        "-norc",
+        "-gg",
+        "-pdfdvi",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "latexmk (lualatex)",
+      "command": "latexmk",
+      "args": [
+        "--interaction=nonstopmode",
+        "-e",
+        "$latex=q/lualatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode -file-line-error %S/",
+        "-e",
+        "$bibtex=q/lualatex %O %B/",
+        "-e",
+        "$biber=q/lualatex %O --bblencoding=utf8 -u -U --output_safechars %B/",
+        "-e",
+        "$makeindex=q/lualatex %O -o %D %S/",
+        "-gg",
+        "-pdflua",
+        "%DOC%"
+      ]
+    }
+  ]
+}
